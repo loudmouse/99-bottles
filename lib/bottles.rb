@@ -1,48 +1,33 @@
 class Bottles
 
-# My 1st Attempt
-  def bottle_singular_plural(count)
-    if count == 1
-      "#{count} bottle of beer on the wall, #{count} bottle of beer."
-    elsif count == 0
-      "No more bottles of beer on the wall, no more bottles of beer."
-    else
-      "#{count} bottles of beer on the wall, #{count} bottles of beer."
+  attr_reader :of_what, :on_what
+
+  def initialize
+    @of_what = "of beer"
+    @on_what = "on the wall"
+  end
+
+  def pluralize(n)
+    if n != 1
+      return 's'
     end
   end
 
-  def remaining_beers(count)
-    if count == 1
-      "Take it down and pass it around, no more bottles of beer on the wall."
-    elsif count == 2
-      "Take one down and pass it around, #{count-1} bottle of beer on the wall."
-    elsif count == 0
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-    else
-      "Take one down and pass it around, #{count-1} bottles of beer on the wall."
-    end
+  # the song method sends the verses messages to the implicit receiver (self), passing it two arguments.
+  def song
+    verses(99, 0)
   end
 
-  def verse(count)
-    <<~STRING
-    #{bottle_singular_plural(count)}
-    #{remaining_beers(count)}
-    STRING
+  def verses(hi,lo)
+    hi.downto(lo).map {|n| verse(n) }.join("\n")
   end
 
-  def verses(countA,countB)
-    <<~STRING
-    #{bottle_singular_plural(countA)}
-    #{remaining_beers(countA)}
-
-    #{bottle_singular_plural(countB)}
-    #{remaining_beers(countB)}
-    STRING
+  def verse(n)
+    "#{n == 0 ? 'No more' : n} bottle#{pluralize(n)}" +
+    " #{of_what} #{on_what}, " +
+    "#{n == 0 ? 'no more' : n} bottle#{pluralize(n)} #{of_what}.\n" +
+    "#{n > 0 ? "Take #{n > 1 ? 'one' : 'it'} down and pass it around"
+    : "Go to the store and buy some more"}, " +
+    "#{n-1 < 0 ? 99 : n-1 == 0 ? 'no more' : n-1} bottle#{pluralize(n-1)}"+ " #{of_what} #{on_what}.\n"
   end
-
-# End My 1st Attempt
-
-
-
-
 end
