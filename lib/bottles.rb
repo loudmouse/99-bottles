@@ -12,13 +12,25 @@ class Bottles
     end
   end
 
+  def pronoun(number)
+    if number == 1
+      "it"
+    else
+      "one"
+    end
+  end
+
+  def quantity(number)
+    if number == 0
+      "no more"
+    else
+      number
+    end
+  end
+
+
   def verse(number)
     case number
-    when 1
-    <<-VERSE
-    1 bottle of beer on the wall, 1 bottle of beer.
-    Take it down and pass it around, no more bottles of beer on the wall.
-    VERSE
     when 0
     <<-VERSE
     No more bottles of beer on the wall, no more bottles of beer.
@@ -26,8 +38,8 @@ class Bottles
     VERSE
     else
     <<-VERSE
-    #{number} bottles of beer on the wall, #{number} bottles of beer.
-    Take one down and pass it around, #{number-1} #{container(number-1)} of beer on the wall.
+    #{number} #{container(number)} of beer on the wall, #{number} #{container(number)} of beer.
+    Take #{pronoun(number)} down and pass it around, #{quantity(number-1)} #{container(number-1)} of beer on the wall.
     VERSE
     end
   end
