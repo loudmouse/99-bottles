@@ -23,3 +23,18 @@
 # To remove the small difference between differing strings we replaced them with a common message send.
 
 # Liskov Substitution Principle
+
+# Create an abstraction
+  # name the concept
+  # create a method to represent it
+  # replace this difference with a message send
+
+# Refactoring in the smallest steps possible:
+  # define a method for the concept
+  # alter it to return one of the differences
+  # replace that difference with a message send
+  # add the `number` argument to the new method, with appropriate default
+  # implement the conditional
+  # pass the `number` argument from the current sender
+  # send the message from the other branch, this time including the `number` argument
+  # clean up

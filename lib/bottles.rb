@@ -24,24 +24,32 @@ class Bottles
     if number == 0
       "no more"
     else
-      number
+      number.to_s
+    end
+  end
+
+  def drink_or_shop(number)
+    if number === 0
+      "Go to the store and buy some more,"
+    else
+      "Take #{pronoun(number)} down and pass it around,"
+    end
+  end
+
+  def successor(number)
+    if number == 0
+      99
+    else
+      number - 1
     end
   end
 
 
   def verse(number)
-    case number
-    when 0
     <<-VERSE
-    No more bottles of beer on the wall, no more bottles of beer.
-    Go to the store and buy some more, 99 bottles of beer on the wall.
+    #{quantity(number).capitalize} #{container(number)} of beer on the wall, #{quantity(number)} #{container(number)} of beer.
+    #{drink_or_shop(number)} #{quantity(successor(number))} #{container(successor(number))} of beer on the wall.
     VERSE
-    else
-    <<-VERSE
-    #{number} #{container(number)} of beer on the wall, #{number} #{container(number)} of beer.
-    Take #{pronoun(number)} down and pass it around, #{quantity(number-1)} #{container(number-1)} of beer on the wall.
-    VERSE
-    end
   end
 
   def verses(starting, ending)
