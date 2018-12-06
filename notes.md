@@ -1,9 +1,15 @@
 # Open / Closed Principle
   # open for extension and closed for modification
     # when you need to add a new feature, first rearrance the code to make it open to the new feature, and then add the new code
+
 # Code Smells
   # a way of naming common code flaws and a system for refactoring them to clean them up
-    # examples are duplicated code and classes that are too large
+    # examples are:
+      # duplicated code
+      # classes that are too large
+      # multiple methods that take the same argument
+      # Primitive Obsession - methods that take the same argument, have the same shape, contain a conditional, could be considered private, depend more on the argument than the class as a whole.
+
 # Flocking Rules
   # select the things that are most alike
   # find the smallest difference between them
@@ -12,6 +18,8 @@
     # parse and execute it
     # parse, execute, and use its result
     # delete unused code
+
+# Extract Class is the refactoring recipe to fix the Primitive Obsession code smell
 
 
 # To make your code open to a new feature,
@@ -38,3 +46,6 @@
   # pass the `number` argument from the current sender
   # send the message from the other branch, this time including the `number` argument
   # clean up
+
+# name methods after what they mean
+# name classes after what they are
